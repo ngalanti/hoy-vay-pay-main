@@ -194,8 +194,8 @@ export const Form = ({
         MAX_BOUND={objects ? Math.max(...objects.map((obj) => obj.amount)) : 0}
       />
 
-      <table className="form-table">
-        <div className="table-container">
+      <div className="table-container">
+        <table className="form-table">
           <thead>
             <tr>
               <th>Title</th>
@@ -240,8 +240,8 @@ export const Form = ({
               <h1 className="not-found">Not found for "{inputSearch}"</h1>
             )}
           </tbody>
-        </div>
-      </table>
+        </table>
+      </div>
     </main>
   );
 };
