@@ -27,9 +27,7 @@ export const Form = ({
   const currencyRef = useRef(null);
 
   const filteredObjects = objects.filter((object) => {
-    const mathSearch = object.title
-      .toLowerCase()
-      .includes(inputSearch.toLowerCase());
+    const mathSearch = object.title.toLowerCase().includes(inputSearch.toLowerCase());
     if (selectedFilter && selectedFilter.type === "amount") {
       return (
         mathSearch &&
@@ -116,9 +114,7 @@ export const Form = ({
     try {
       setIsPending(true);
       const data = await deleteObject(user.id, objectId);
-      setObjects((prevObjects) =>
-        prevObjects.filter((obj) => obj._id !== objectId)
-      );
+      setObjects((prevObjects) => prevObjects.filter((obj) => obj._id !== objectId));
       toast.success(data.message);
     } catch (error) {
       toast.error(error.message);
@@ -199,16 +195,18 @@ export const Form = ({
       />
 
       <table className="form-table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Exchanged amount</th>
-            <th>Tag</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+        <div className="table-container">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Exchanged amount</th>
+              <th>Tag</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+        </div>
         <tbody>
           {filteredObjects.length || isPending ? (
             filteredObjects.map((object) => (
