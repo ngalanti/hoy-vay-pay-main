@@ -114,3 +114,10 @@ input[type="number"] {
   background-color: #ef4444;
    color: white;
 }
+
+
+.table-container{
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
