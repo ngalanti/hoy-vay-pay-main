@@ -21,7 +21,7 @@ const addExpense = async (req, res) => {
       return res.status(404).json({ message: "user not found" });
     }
 
-    let exchangedAmount;
+    let exchangedAmount = amount;
 
     if (currency !== BASE_CURRENCY) {
       const response = await fetch(
@@ -117,7 +117,7 @@ const updateExpense = async (req, res) => {
       return res.status(404).json({ message: "expense not found" });
     }
 
-    let tempExchangedAmount;
+    let tempExchangedAmoun = amount;
 
     if (
       currency !== BASE_CURRENCY &&
