@@ -206,41 +206,41 @@ export const Form = ({
               <th>Actions</th>
             </tr>
           </thead>
+          <tbody>
+            {filteredObjects.length || isPending ? (
+              filteredObjects.map((object) => (
+                <tr key={object._id}>
+                  <td>{object.title}</td>
+                  <td>{object.description}</td>
+                  <td>
+                    {object.amount}
+                    {CURRENCY_SYMBOLS[object.currency]}
+                  </td>
+                  <td>{object.exchangedAmount}</td>
+                  <td>{object.tag}</td>
+                  <td>
+                    <div className="action-buttons">
+                      <button
+                        onClick={() => handleEditObject(object)}
+                        className="edit-button"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDeleteObject(object._id)}
+                        className="delete-button"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <h1 className="not-found">Not found for "{inputSearch}"</h1>
+            )}
+          </tbody>
         </div>
-        <tbody>
-          {filteredObjects.length || isPending ? (
-            filteredObjects.map((object) => (
-              <tr key={object._id}>
-                <td>{object.title}</td>
-                <td>{object.description}</td>
-                <td>
-                  {object.amount}
-                  {CURRENCY_SYMBOLS[object.currency]}
-                </td>
-                <td>{object.exchangedAmount}</td>
-                <td>{object.tag}</td>
-                <td>
-                  <div className="action-buttons">
-                    <button
-                      onClick={() => handleEditObject(object)}
-                      className="edit-button"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => handleDeleteObject(object._id)}
-                      className="delete-button"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <h1 className="not-found">Not found for "{inputSearch}"</h1>
-          )}
-        </tbody>
       </table>
     </main>
   );
